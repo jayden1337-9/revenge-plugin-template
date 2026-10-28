@@ -1,0 +1,44 @@
+
+name: Build Bot Client
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "plugins/bot-client/**"
+      - ".github/workflows/build.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install
+        env:
+          GITHUB_TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
+
+      - name: Build plugins
+        run: ./gradlew --no-daemon packageAllPlugins
+
+      - name: Upload build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: bot-client-build
+          path: build/dist/**
+          if-no-files-found: error
+          
