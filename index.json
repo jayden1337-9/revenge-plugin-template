@@ -1,0 +1,257 @@
+{
+  "format": 1,
+  "name": "My Plugin Repository",
+  "description": "Example plugin repository from the Revenge plugin template.",
+  "plugins": {
+    "com.example.always-errors": {
+      "name": "Always Errors",
+      "description": "A plugin that always throws errors.",
+      "author": "Your Name <643945264868098049> (https://discord.com \"Website\")",
+      "icon": "CircleErrorIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.always-errors@1.0.0.zip",
+          "sha256": "00b98144e95dabab45cad2b6e161e561f9594d83895cce431c33f6cdb17340f1",
+          "size": 599,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "com.example.dependent": {
+      "name": "Example Dependent",
+      "description": "Depends on Example Library. Also installs the library.",
+      "author": "Your Name <643945264868098049> (https://discord.com \"Website\")",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.dependent@1.0.0.zip",
+          "sha256": "fb049fc194852169f231ac3a7e55f6b2d5a58e0e4df77b14d6deb14ece9c55ee",
+          "size": 641,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "com.example.library": {
+              "version": ">=1 <2"
+            }
+          }
+        }
+      }
+    },
+    "com.example.emojis": {
+      "name": "Example Emojis",
+      "description": "Example emoji packs for Revenge.",
+      "author": "Your Name",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.emojis@1.0.0.zip",
+          "sha256": "5b70be0fab36ed84fb42bb2a8cfae89aaac04751f2a75adc00c5806af5df0f5c",
+          "size": 7330,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "revenge.api.themes": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "com.example.fonts": {
+      "name": "Example Fonts",
+      "description": "Example font packs for Revenge.",
+      "author": "Your Name",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.fonts@1.0.0.zip",
+          "sha256": "3e21c3dc5304914d64dacff37305eb811283ea422b8435b8a2231d9cc403d32e",
+          "size": 2424127,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "revenge.api.themes": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "com.example.icons": {
+      "name": "Example Icons",
+      "description": "Example icon packs for Revenge.",
+      "author": "Your Name",
+      "channels": {
+        "latest": "1.1.0"
+      },
+      "versions": {
+        "1.1.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.icons@1.1.0.zip",
+          "sha256": "bc34c72befa4e00b7183e96ffafaf35fd5d339b56c996d3c1e87d06d1602c4cb",
+          "size": 6807,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "revenge.api.themes": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "com.example.js-plugin": {
+      "name": "JS Plugin",
+      "description": "A JS-only example plugin without any native code.",
+      "author": "Your Name <643945264868098049> (https://discord.com \"Website\")",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.js-plugin@1.0.0.zip",
+          "sha256": "c5ccc377835675e559e38aece21e065895ca04c835d48e8ec5d0ca295e387124",
+          "size": 611,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "com.example.library": {
+      "name": "Example Library",
+      "description": "A plugin other plugins can depend on. See Example Dependent.",
+      "author": "Your Name <643945264868098049> (https://discord.com \"Website\")",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.library@1.0.0.zip",
+          "sha256": "a49f7e83acae73ebe94d3f71ebed28d680a44799d8299da4803117999d59304e",
+          "size": 641,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "com.example.plugin": {
+      "name": "Example Plugin",
+      "description": "An example Revenge plugin built from the template.",
+      "author": "Your Name <643945264868098049> (https://discord.com \"Website\")",
+      "contributors": [
+        "Someone Else <669627189624307712> (mailto:support@discord.com)",
+        "Some Other Person"
+      ],
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.plugin@1.0.0.zip",
+          "sha256": "afb037b752661105f50e2aecc27f43a96ff69f0ae5d16ac3059d26e8751651ea",
+          "size": 5761,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "com.example.themes": {
+      "name": "Example Themes",
+      "description": "Example themes for Revenge.",
+      "author": "Your Name",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/com.example.themes@1.0.0.zip",
+          "sha256": "ee68271dc98d3466cc92523580bdfd1a3742513a511bcd5d52d628dabc702324",
+          "size": 91234,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "revenge.api.themes": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "dev.jayden.botclient": {
+      "name": "Bot Client",
+      "description": "Discord-mobile-style interface for a bot account. Token encrypted with Android Keystore.",
+      "author": "Jayden",
+      "channels": {
+        "latest": "0.1.0"
+      },
+      "versions": {
+        "0.1.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/dev.jayden.botclient@0.1.0.zip",
+          "sha256": "4bea295b2a71a60e9425fdc150ab57989cc3d0fe6241cad2937af96c2b63d362",
+          "size": 9215,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    }
+  }
+}
