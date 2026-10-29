@@ -359,7 +359,10 @@ pluginDefs.forEach { (dir, id, version, jarName, scriptName) ->
         buildJsTasks[dir]?.let { dependsOn(it) }
         mustRunAfter(cleanTasks)
 
-        from(File(dir, "manifest.json"))
+        // The installer requires manifest.json at the ZIP root.
+        from(File(dir, "manifest.json")) {
+            eachFile { path = "manifest.json" }
+        }
 
         if (jarName != null && File(dir, "src/main").isDirectory) {
             val nativePath = ":${dir.parentFile.name}:${dir.name}"
@@ -382,7 +385,15 @@ pluginDefs.forEach { (dir, id, version, jarName, scriptName) ->
 
         archiveFileName.set("$id@$version.zip")
         destinationDirectory.set(layout.buildDirectory.dir("dist"))
-        doLast { logger.lifecycle("Packaged $id -> ${archiveFile.get().asFile.relativeTo(rootDir)}") }
+        doLast {
+            val archive = archiveFile.get().asFile
+            java.util.zip.ZipFile(archive).use { zip ->
+                if (zip.getEntry("manifest.json") == null) {
+                    error("Invalid plugin ZIP for $id: manifest.json is not at the ZIP root.")
+                }
+            }
+            logger.lifecycle("Packaged $id -> ${archive.relativeTo(rootDir)} (manifest.json verified)")
+        }
     }
 
     packageAllPlugins.configure { dependsOn(pkg) }
