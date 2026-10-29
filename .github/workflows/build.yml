@@ -1,5 +1,4 @@
-
-name: Build Bot Client
+name: Build Plugins
 
 on:
   workflow_dispatch:
@@ -7,7 +6,14 @@ on:
     branches:
       - main
     paths:
-      - "plugins/bot-client/**"
+      - "plugins/**"
+      - "themes/**"
+      - "build.gradle.kts"
+      - "settings.gradle.kts"
+      - "gradle/**"
+      - "gradlew"
+      - "bun.lock*"
+      - "package.json"
       - ".github/workflows/build.yml"
 
 jobs:
@@ -36,9 +42,9 @@ jobs:
         run: ./gradlew --no-daemon packageAllPlugins
 
       - name: Upload build output
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bot-client-build
+          name: plugin-build-output
           path: build/dist/**
-          if-no-files-found: error
-          
+          if-no-files-found: warn
