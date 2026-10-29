@@ -3,9 +3,9 @@
   "id": "dev.jayden.theme-studio",
   "name": "Theme Studio",
   "author": "Jayden",
-  "description": "Create, save, preview, and register your own local Revenge Next themes.",
+  "description": "Browse starter themes and create, preview, and save custom Revenge themes.",
   "icon": "PaintPaletteIcon",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "revenge.api": { "version": ">=1" },
     "discord": { "version": "*" },
