@@ -1,6 +1,6 @@
 import React from 'react'
+import { View } from 'react-native'
 import { Design } from '@revenge-mod/discord/design'
-import { plugin } from '@revenge-mod/plugins'
 
 type ThemePack = {
   id: string
@@ -136,12 +136,12 @@ export default plugin<{ jsonStorage: Settings }>({
           <TableRow label="Surface" trailing={<Design.TextInput value={draft.surface} onChangeText={(surface: string) => update({ surface })} placeholder="#2f3136" />} />
           <TableRow label="Text" trailing={<Design.TextInput value={draft.text} onChangeText={(text: string) => update({ text })} placeholder="#ffffff" />} />
           <TableRow label="Accent" trailing={<Design.TextInput value={draft.accent} onChangeText={(accent: string) => update({ accent })} placeholder="#5865f2" />} />
-          <TableRow label="Preview" description={`${draft.background} background · ${draft.surface} surface · ${draft.accent} accent`} trailing={<React.View style={{ flexDirection: 'row', gap: 5 }}><React.View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.background }} /><React.View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.surface }} /><React.View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.accent }} /></React.View>} />
+          <TableRow label="Preview" description={`${draft.background} background · ${draft.surface} surface · ${draft.accent} accent`} trailing={<View style={{ flexDirection: 'row', gap: 5 }}><View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.background }} /><View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.surface }} /><View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.accent }} /></View>} />
           <TableRow label="Save theme" description="Saves this theme locally and registers it in Revenge's Themes picker." trailing={<Design.Button text="Save" onPress={save} />} />
         </TableRowGroup>
         <TableRowGroup title={`Local Theme Hub (${packs.length})`} subtitle="Only themes saved on this device appear here. No marketplace or account is used.">
           {packs.length === 0 ? <TableRow label="No saved themes yet" description="Create a theme above, then save it." /> : packs.map(pack => (
-            <TableRow key={pack.id} label={pack.name} description={`${pack.background} · ${pack.accent}`} trailing={<React.View style={{ flexDirection: 'row', gap: 6 }}><Design.Button text="Edit" onPress={() => load(pack)} /><Design.Button text="Delete" variant="destructive" onPress={() => remove(pack.id)} /></React.View>} />
+            <TableRow key={pack.id} label={pack.name} description={`${pack.background} · ${pack.accent}`} trailing={<View style={{ flexDirection: 'row', gap: 6 }}><Design.Button text="Edit" onPress={() => load(pack)} /><Design.Button text="Delete" variant="destructive" onPress={() => remove(pack.id)} /></View>} />
           ))}
         </TableRowGroup>
         <TableRowGroup title="How to apply">
