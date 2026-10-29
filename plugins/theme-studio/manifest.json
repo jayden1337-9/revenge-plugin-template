@@ -1,0 +1,15 @@
+{
+  "format": 1,
+  "id": "dev.jayden.theme-studio",
+  "name": "Theme Studio",
+  "author": "Jayden",
+  "description": "Create, save, preview, and register your own local Revenge color themes.",
+  "icon": "PaintPaletteIcon",
+  "version": "0.1.0",
+  "dependencies": {
+    "revenge.api": { "version": ">=1" },
+    "discord": { "version": "*" },
+    "revenge.api.themes": { "version": "*" }
+  },
+  "dist": { "script": "index.js" }
+}
