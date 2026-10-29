@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Text, TextInput, Pressable, ImageBackground, ScrollView } from 'react-native'
-import { Design } from '@revenge-mod/discord/design'
 
 type ThemePack = {
   id: string
