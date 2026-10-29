@@ -259,13 +259,29 @@
       "author": "Jayden",
       "icon": "PaintPaletteIcon",
       "channels": {
-        "latest": "0.1.0"
+        "latest": "0.1.1"
       },
       "versions": {
         "0.1.0": {
           "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/dev.jayden.theme-studio@0.1.0.zip",
           "sha256": "9af4f41af715c2887820d33452fdc7b381545acfd7876e043640689ac1cf7741",
           "size": 2384,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "revenge.api.themes": {
+              "version": "*"
+            }
+          }
+        },
+        "0.1.1": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/dev.jayden.theme-studio@0.1.1.zip",
+          "sha256": "639fa8bf5992d143c60eaa54329dc0513cebc1cca74d653f134960cb818391e8",
+          "size": 2383,
           "dependencies": {
             "revenge.api": {
               "version": ">=1"
