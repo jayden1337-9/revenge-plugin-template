@@ -252,6 +252,33 @@
           }
         }
       }
+    },
+    "dev.jayden.theme-studio": {
+      "name": "Theme Studio",
+      "description": "Create, save, preview, and register your own local Revenge Next themes.",
+      "author": "Jayden",
+      "icon": "PaintPaletteIcon",
+      "channels": {
+        "latest": "0.1.0"
+      },
+      "versions": {
+        "0.1.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/dev.jayden.theme-studio@0.1.0.zip",
+          "sha256": "9af4f41af715c2887820d33452fdc7b381545acfd7876e043640689ac1cf7741",
+          "size": 2384,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "revenge.api.themes": {
+              "version": "*"
+            }
+          }
+        }
+      }
     }
   }
 }
