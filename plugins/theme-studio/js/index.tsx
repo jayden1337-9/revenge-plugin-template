@@ -20,7 +20,7 @@ const PUBLIC_THEMES: ThemePack[] = [
   { id: 'forest', name: 'Forest', background: '#101e18', surface: '#20372b', text: '#e6ffef', accent: '#5ce0a0', glass: false, imageUrl: '' },
 ]
 const hex = (v: string, fallback: string) => /^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$/.test(v) ? v : fallback
-const safeId = (v: string) => v.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 32) || 'custom-theme'
+const safeId = (v: string) => String(v ?? '').toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 32) || 'custom-theme'
 const C = { ink: '#f5f2f8', muted: '#aaa4b3', panel: '#211d26', panel2: '#2b2531', line: '#3a3341', accent: '#c5a5ff', danger: '#ff647c' }
 const labelStyle = { color: C.muted, fontSize: 12, fontWeight: '700' as const, marginBottom: 7 }
 const inputStyle = { color: C.ink, backgroundColor: '#17141b', borderColor: C.line, borderWidth: 1, borderRadius: 12, paddingHorizontal: 13, paddingVertical: 11, fontSize: 14 }
@@ -36,14 +36,15 @@ function Preview({ pack }: { pack: ThemePack }) {
     <Text style={{ color: hex(pack.text, '#ffffff'), opacity: 0.72, fontSize: 12, marginBottom: 15 }}>A little preview of your Revenge look</Text>
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}><View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: hex(pack.accent, '#5865f2'), alignItems: 'center', justifyContent: 'center' }}><Text style={{ color: '#fff', fontWeight: '900' }}>R</Text></View><View style={{ flex: 1 }}><Text style={{ color: hex(pack.text, '#ffffff'), fontWeight: '700' }}>Theme preview</Text><Text style={{ color: hex(pack.text, '#ffffff'), opacity: 0.65, fontSize: 11 }}>Colours update as you edit</Text></View><View style={{ backgroundColor: hex(pack.accent, '#5865f2'), borderRadius: 8, paddingVertical: 7, paddingHorizontal: 11 }}><Text style={{ color: '#fff', fontWeight: '800', fontSize: 11 }}>BUTTON</Text></View></View>
   </View>
-  return pack.imageUrl.trim() ? <ImageBackground source={{ uri: pack.imageUrl.trim() }} resizeMode="cover" imageStyle={{ borderRadius: 18 }} style={{ borderRadius: 18, overflow: 'hidden', minHeight: 170, justifyContent: 'center', backgroundColor: hex(pack.background, '#202225') }}>{card}</ImageBackground> : <View style={{ borderRadius: 18, overflow: 'hidden', backgroundColor: hex(pack.background, '#202225'), minHeight: 170, justifyContent: 'center' }}>{card}</View>
+  const imageUrl = String(pack.imageUrl ?? '').trim()
+  return imageUrl ? <ImageBackground source={{ uri: imageUrl }} resizeMode="cover" imageStyle={{ borderRadius: 18 }} style={{ borderRadius: 18, overflow: 'hidden', minHeight: 170, justifyContent: 'center', backgroundColor: hex(pack.background, '#202225') }}>{card}</ImageBackground> : <View style={{ borderRadius: 18, overflow: 'hidden', backgroundColor: hex(pack.background, '#202225'), minHeight: 170, justifyContent: 'center' }}>{card}</View>
 }
 export default plugin<{ jsonStorage: Settings }>({
   jsonStorage: { load: true, default: { packs: [], selectedId: '', draft: DEFAULT_DRAFT, page: 'discover' } },
   preInit({ themes }) { themes.registerGroup('theme-studio-local', { name: 'Theme Studio', description: 'Themes created or saved locally on this device.' }) },
   start({ themes, jsonStorage, logger }) {
     const registerPack = (p: ThemePack) => themes.registerTheme('theme-studio-local', safeId(p.id || p.name), {
-      name: p.name.trim().slice(0, 40) || 'Untitled Theme',
+      name: String(p.name ?? '').trim().slice(0, 40) || 'Untitled Theme',
       getColors: () => {
         const bg = hex(p.background, '#202225'), surface = hex(p.surface, '#2f3136'), fg = hex(p.text, '#ffffff')
         return { semantic: {
@@ -59,15 +60,15 @@ export default plugin<{ jsonStorage: Settings }>({
   },
   SettingsComponent({ api }) {
     const settings = api.jsonStorage.use()
-    const packs = settings?.packs ?? []
-    const draft = settings?.draft ?? DEFAULT_DRAFT
+    const packs = (Array.isArray(settings?.packs) ? settings.packs : []).map(p => ({ ...DEFAULT_DRAFT, ...p, id: String(p?.id ?? ''), name: String(p?.name ?? 'Untitled Theme'), imageUrl: String(p?.imageUrl ?? ''), glass: p?.glass ?? false }))
+    const draft = { ...DEFAULT_DRAFT, ...(settings?.draft ?? {}), name: String(settings?.draft?.name ?? DEFAULT_DRAFT.name), imageUrl: String(settings?.draft?.imageUrl ?? DEFAULT_DRAFT.imageUrl) }
     const page = settings?.page ?? 'discover'
     const update = (patch: Partial<ThemePack>) => api.jsonStorage.set({ ...settings, draft: { ...draft, ...patch } })
     const openCreate = (pack = DEFAULT_DRAFT) => api.jsonStorage.set({ ...settings, page: 'create', draft: { ...pack } })
     const save = (source = draft) => {
-      const name = source.name.trim().slice(0, 40) || 'Untitled Theme'
+      const name = String(source.name ?? '').trim().slice(0, 40) || 'Untitled Theme'
       const id = safeId(name)
-      const pack = { ...source, id, name, background: hex(source.background, '#202225'), surface: hex(source.surface, '#2f3136'), text: hex(source.text, '#ffffff'), accent: hex(source.accent, '#5865f2'), imageUrl: source.imageUrl.trim() }
+      const pack = { ...source, id, name, background: hex(source.background, '#202225'), surface: hex(source.surface, '#2f3136'), text: hex(source.text, '#ffffff'), accent: hex(source.accent, '#5865f2'), imageUrl: String(source.imageUrl ?? '').trim() }
       const next = [...packs.filter(p => p.id !== id), pack]
       api.jsonStorage.set({ ...settings, packs: next, selectedId: id, draft: pack, page: 'discover' })
       try { api.themes.registerTheme('theme-studio-local', id, { name, getColors: () => ({ semantic: {
