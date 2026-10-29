@@ -131,11 +131,11 @@ export default plugin<{ jsonStorage: Settings }>({
       <>
         <TableRowGroup title="Theme Creator" subtitle="Create color themes that match Revenge's native settings style.">
           <TableRow label="Theme name" description="Use a short name for the Revenge Themes picker." />
-          <TableRow label="Name" trailing={<Design.TextInput value={draft.name} onChangeText={(name: string) => update({ name })} placeholder="My Theme" />} />
-          <TableRow label="Background" trailing={<Design.TextInput value={draft.background} onChangeText={(background: string) => update({ background })} placeholder="#202225" />} />
-          <TableRow label="Surface" trailing={<Design.TextInput value={draft.surface} onChangeText={(surface: string) => update({ surface })} placeholder="#2f3136" />} />
-          <TableRow label="Text" trailing={<Design.TextInput value={draft.text} onChangeText={(text: string) => update({ text })} placeholder="#ffffff" />} />
-          <TableRow label="Accent" trailing={<Design.TextInput value={draft.accent} onChangeText={(accent: string) => update({ accent })} placeholder="#5865f2" />} />
+          <TableRow label="Name" trailing={<Design.TextInput value={draft.name} onChange={(name: string) => update({ name })} placeholder="My Theme" />} />
+          <TableRow label="Background" trailing={<Design.TextInput value={draft.background} onChange={(background: string) => update({ background })} placeholder="#202225" />} />
+          <TableRow label="Surface" trailing={<Design.TextInput value={draft.surface} onChange={(surface: string) => update({ surface })} placeholder="#2f3136" />} />
+          <TableRow label="Text" trailing={<Design.TextInput value={draft.text} onChange={(text: string) => update({ text })} placeholder="#ffffff" />} />
+          <TableRow label="Accent" trailing={<Design.TextInput value={draft.accent} onChange={(accent: string) => update({ accent })} placeholder="#5865f2" />} />
           <TableRow label="Preview" description={`${draft.background} background · ${draft.surface} surface · ${draft.accent} accent`} trailing={<View style={{ flexDirection: 'row', gap: 5 }}><View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.background }} /><View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.surface }} /><View style={{ width: 22, height: 22, borderRadius: 6, backgroundColor: draft.accent }} /></View>} />
           <TableRow label="Save theme" description="Saves this theme locally and registers it in Revenge's Themes picker." trailing={<Design.Button text="Save" onPress={save} />} />
         </TableRowGroup>
