@@ -255,11 +255,11 @@
     },
     "dev.jayden.theme-studio": {
       "name": "Theme Studio",
-      "description": "Create, save, preview, and register your own local Revenge Next themes.",
+      "description": "Browse starter themes and create, preview, and save custom Revenge themes.",
       "author": "Jayden",
       "icon": "PaintPaletteIcon",
       "channels": {
-        "latest": "0.1.1"
+        "latest": "0.1.2"
       },
       "versions": {
         "0.1.0": {
@@ -282,6 +282,22 @@
           "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/dev.jayden.theme-studio@0.1.1.zip",
           "sha256": "639fa8bf5992d143c60eaa54329dc0513cebc1cca74d653f134960cb818391e8",
           "size": 2383,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "revenge.api.themes": {
+              "version": "*"
+            }
+          }
+        },
+        "0.1.2": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/dev.jayden.theme-studio@0.1.2.zip",
+          "sha256": "78f99397b88ee35281a633b39b9efae66768c38f290951d4542e8f58991109f4",
+          "size": 3809,
           "dependencies": {
             "revenge.api": {
               "version": ">=1"
