@@ -253,6 +253,29 @@
         }
       }
     },
+    "dev.jayden.doom-launcher": {
+      "name": "DOOM Launcher",
+      "description": "Launch a browser-based DOOM-compatible engine and use WAD files you supply.",
+      "author": "Jayden",
+      "channels": {
+        "latest": "0.1.0"
+      },
+      "versions": {
+        "0.1.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/dev.jayden.doom-launcher@0.1.0.zip",
+          "sha256": "4d454f6238d6169c173ba1f94c1b5c9d18aedbb8aa4a64b629f4e61f41e8a228",
+          "size": 1513,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
     "dev.jayden.theme-studio": {
       "name": "Theme Studio",
       "description": "Browse starter themes and create, preview, and save custom Revenge themes.",
