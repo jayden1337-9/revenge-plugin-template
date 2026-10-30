@@ -1,0 +1,19 @@
+{
+  "format": 1,
+  "id": "dev.jayden.doom-launcher",
+  "name": "DOOM Launcher",
+  "author": "Jayden",
+  "description": "Launch a browser-based DOOM-compatible engine and use WAD files you supply.",
+  "version": "0.1.0",
+  "dependencies": {
+    "revenge.api": {
+      "version": ">=1.2.1 <2"
+    },
+    "discord": {
+      "version": "*"
+    }
+  },
+  "dist": {
+    "script": "index.js"
+  }
+}
