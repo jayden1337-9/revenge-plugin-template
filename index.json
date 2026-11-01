@@ -230,6 +230,29 @@
         }
       }
     },
+    "dev.jayden.account-switcher": {
+      "name": "Revenge Account Switcher",
+      "description": "Experimental account switcher UI and account profile manager for Revenge.",
+      "author": "Jayden",
+      "channels": {
+        "latest": "0.1.0"
+      },
+      "versions": {
+        "0.1.0": {
+          "url": "https://jayden1337-9.github.io/revenge-plugin-template/pool/dev.jayden.account-switcher@0.1.0.zip",
+          "sha256": "c770db634f2f691055e4d84f7d1d6810b3583ae0d7e18bddbea173510c2cc788",
+          "size": 346,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
     "dev.jayden.botclient": {
       "name": "Bot Client",
       "description": "Discord-mobile-style interface for a bot account. Token encrypted with Android Keystore.",
