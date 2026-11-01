@@ -1,26 +1,18 @@
 # Revenge Account Switcher
 
-**Status: experimental foundation — not yet a working session switcher.**
+**Version 0.1.0 — persistent profile manager preview.**
 
-## Planned features
+## Included
+- Settings UI with saved profile cards
+- Add profiles using username and numeric Discord user ID
+- Optional HTTPS avatar URL
+- Persistent non-secret profile metadata using Revenge per-plugin JSON storage
+- Explicit profile removal and sorted list
 
-- Website-style account menu and compact mobile popup
-- Account cards with username, avatar and active-account indicator
-- Add/remove profile entries
-- Explicit logout/removal only
-- Switch confirmation and rollback if the host rejects a switch
-- Persistent, non-secret profile metadata
+## Session switching status
+Actual Discord login/session switching is **not implemented**. The public Revenge plugin API available to this project does not expose a documented account-session switching interface. The UI therefore marks switching unavailable instead of pretending it succeeded.
 
-## Authentication boundary
-
-This plugin does not collect, display, export, or save Discord tokens, cookies, passwords, or other authentication secrets. It does not attempt to clone Discord's private account database or call undocumented authentication endpoints.
-
-The template's documented public plugin examples expose lifecycle hooks and native-method bridging, but do not document an official account-session switching API. A UI-only implementation cannot genuinely switch Discord accounts. Session switching must remain disabled until a supported host API is identified and tested.
-
-## Persistence design
-
-Only non-secret profile metadata should be persisted by the plugin. Session credentials must remain under Discord/Android's own authentication management. A profile must never be presented as switchable merely because its metadata exists.
+The plugin never reads, extracts, exports, or stores Discord tokens, cookies, passwords, or other authentication secrets. Discord remains responsible for authentication. Removing a profile only removes local metadata; it does not log out of Discord.
 
 ## Build
-
-This is a JavaScript-only plugin and follows the repository's normal packageAllPlugins and release workflow.
+Run the **Account Switcher Build** workflow manually, or push changes under `plugins/account-switcher/`.
